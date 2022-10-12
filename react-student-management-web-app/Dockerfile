@@ -10,7 +10,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 # Install nginx
 RUN apt-get update
 RUN apt-get install nginx -y
-RUN cp nginx.conf /etc/nginx/sites-available/default
+COPY nginx.conf /etc/nginx/sites-available/default
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 
 
