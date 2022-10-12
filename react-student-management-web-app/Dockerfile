@@ -20,7 +20,7 @@ RUN yarn install
 RUN ls
 RUN yarn 
 RUN yarn build
-RUN cp -R build/* /var/www/html/
+RUN cp -R react-student-management-web-app/build/* /var/www/html/
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
