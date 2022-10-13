@@ -10,8 +10,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 # Install nginx
 RUN apt-get update
 RUN apt-get install nginx -y
-WORKDIR /react-student-management-web-app
-COPY nginx.conf /etc/nginx/sites-available/default
+COPY react-student-management-web-app/nginx.conf /etc/nginx/sites-available/default
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 
 
@@ -21,7 +20,7 @@ RUN yarn install
 RUN ls
 RUN yarn 
 RUN yarn build
-COPY build/* /var/www/html/
+RUN cp -R build/* /var/www/html/
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
